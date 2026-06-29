@@ -91,24 +91,23 @@ modalCloses.forEach((modalClose) => {
   });
 });
 
-/*==================== PORTFOLIO SWIPER  ====================*/
-let swiperPortfolio = new Swiper(".portfolio__container", {
-  cssMode: true,
-  loop: true,
+/*==================== PORTFOLIO SWIPER (legacy - only if carousel is used) ====================*/
+const portfolioContainer = document.querySelector(".portfolio__container.swiper-container");
 
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-
-  /* mousewheel: true,
-  keyboard: true, */
-});
+if (portfolioContainer) {
+  let swiperPortfolio = new Swiper(".portfolio__container", {
+    cssMode: true,
+    loop: true,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+  });
+}
 
 /*==================== TESTIMONIAL ====================*/
 let swiperTestimonial = new Swiper(".testimonial__container", {
@@ -210,3 +209,174 @@ themeButton.addEventListener("click", () => {
   localStorage.setItem("selected-theme", getCurrentTheme());
   localStorage.setItem("selected-icon", getCurrentIcon());
 });
+
+/*==================== CONTACT FORM VALIDATION ====================*/
+const contactForm = document.getElementById("contact-form");
+
+if (contactForm) {
+  const contactFields = {
+    name: contactForm.querySelector("#contact-name"),
+    email: contactForm.querySelector("#contact-email"),
+    mobile: contactForm.querySelector("#contact-mobile"),
+    subject: contactForm.querySelector("#contact-subject"),
+    message: contactForm.querySelector("#contact-message"),
+  };
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  function getFieldValue(field) {
+    return field.value.trim();
+  }
+
+  function isValidEmail(value) {
+    return emailPattern.test(value);
+  }
+
+  function isValidPhone(value) {
+    const digits = value.replace(/\D/g, "");
+
+    if (digits.length === 10) {
+      return /^[6-9]\d{9}$/.test(digits);
+    }
+
+    if (digits.length === 12 && digits.startsWith("91")) {
+      return /^91[6-9]\d{9}$/.test(digits);
+    }
+
+    return digits.length >= 7 && digits.length <= 15;
+  }
+
+  function setFieldError(fieldName, message) {
+    const field = contactFields[fieldName];
+    const wrapper = field.closest(".contact__content");
+    const errorEl = wrapper.querySelector(".contact__error");
+
+    wrapper.classList.toggle("contact__content--invalid", Boolean(message));
+    field.setAttribute("aria-invalid", message ? "true" : "false");
+    errorEl.textContent = message || "";
+  }
+
+  function validateName() {
+    const value = getFieldValue(contactFields.name);
+
+    if (!value) {
+      setFieldError("name", "Name is required.");
+      return false;
+    }
+
+    if (value.length < 2) {
+      setFieldError("name", "Name must be at least 2 characters.");
+      return false;
+    }
+
+    setFieldError("name", "");
+    return true;
+  }
+
+  function validateEmailOrPhone() {
+    const email = getFieldValue(contactFields.email);
+    const mobile = getFieldValue(contactFields.mobile);
+    let isValid = true;
+
+    if (!email && !mobile) {
+      setFieldError("email", "Enter an email or mobile number.");
+      setFieldError("mobile", "Enter an email or mobile number.");
+      return false;
+    }
+
+    if (email && !isValidEmail(email)) {
+      setFieldError("email", "Enter a valid email address.");
+      isValid = false;
+    } else {
+      setFieldError("email", "");
+    }
+
+    if (mobile && !isValidPhone(mobile)) {
+      setFieldError(
+        "mobile",
+        "Enter a valid mobile number (10-digit Indian or international)."
+      );
+      isValid = false;
+    } else {
+      setFieldError("mobile", "");
+    }
+
+    return isValid;
+  }
+
+  function validateSubject() {
+    const value = getFieldValue(contactFields.subject);
+
+    if (!value) {
+      setFieldError("subject", "Subject is required.");
+      return false;
+    }
+
+    if (value.length < 3) {
+      setFieldError("subject", "Subject must be at least 3 characters.");
+      return false;
+    }
+
+    setFieldError("subject", "");
+    return true;
+  }
+
+  function validateMessage() {
+    const value = getFieldValue(contactFields.message);
+
+    if (!value) {
+      setFieldError("message", "Description is required.");
+      return false;
+    }
+
+    if (value.length < 10) {
+      setFieldError("message", "Description must be at least 10 characters.");
+      return false;
+    }
+
+    setFieldError("message", "");
+    return true;
+  }
+
+  function validateForm() {
+    const results = [
+      validateName(),
+      validateEmailOrPhone(),
+      validateSubject(),
+      validateMessage(),
+    ];
+
+    return results.every(Boolean);
+  }
+
+  const fieldValidators = {
+    name: validateName,
+    email: validateEmailOrPhone,
+    mobile: validateEmailOrPhone,
+    subject: validateSubject,
+    message: validateMessage,
+  };
+
+  Object.entries(contactFields).forEach(([fieldName, field]) => {
+    field.addEventListener("blur", fieldValidators[fieldName]);
+    field.addEventListener("input", () => {
+      if (field.closest(".contact__content").classList.contains("contact__content--invalid")) {
+        fieldValidators[fieldName]();
+      }
+    });
+  });
+
+  contactForm.addEventListener("submit", (event) => {
+    if (!validateForm()) {
+      event.preventDefault();
+
+      const firstInvalidField = contactForm.querySelector(
+        ".contact__content--invalid .contact__input, .contact__content--invalid .contact__textarea"
+      );
+
+      if (firstInvalidField) {
+        firstInvalidField.focus();
+      }
+    }
+  });
+}
