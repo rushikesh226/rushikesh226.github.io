@@ -92,7 +92,9 @@ modalCloses.forEach((modalClose) => {
 });
 
 /*==================== PORTFOLIO SWIPER (legacy - only if carousel is used) ====================*/
-const portfolioContainer = document.querySelector(".portfolio__container.swiper-container");
+const portfolioContainer = document.querySelector(
+  ".portfolio__container.swiper-container",
+);
 
 if (portfolioContainer) {
   let swiperPortfolio = new Swiper(".portfolio__container", {
@@ -143,13 +145,19 @@ function scrollActive() {
     sectionId = current.getAttribute("id");
 
     if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-      document
-        .querySelector(".nav__menu a[href*=" + sectionId + "]")
-        .classList.add("active-link");
+      const activeLink = document.querySelector(
+        ".nav__menu a[href*=" + sectionId + "]",
+      );
+      if (activeLink) {
+        activeLink.classList.add("active-link");
+      }
     } else {
-      document
-        .querySelector(".nav__menu a[href*=" + sectionId + "]")
-        .classList.remove("active-link");
+      const inactiveLink = document.querySelector(
+        ".nav__menu a[href*=" + sectionId + "]",
+      );
+      if (inactiveLink) {
+        inactiveLink.classList.remove("active-link");
+      }
     }
   });
 }
@@ -193,10 +201,10 @@ const getCurrentIcon = () =>
 if (selectedTheme) {
   // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
   document.body.classList[selectedTheme === "dark" ? "add" : "remove"](
-    darkTheme
+    darkTheme,
   );
   themeButton.classList[selectedIcon === "uil-moon" ? "add" : "remove"](
-    iconTheme
+    iconTheme,
   );
 }
 
@@ -208,6 +216,25 @@ themeButton.addEventListener("click", () => {
   // We save the theme and the current icon that the user chose
   localStorage.setItem("selected-theme", getCurrentTheme());
   localStorage.setItem("selected-icon", getCurrentIcon());
+});
+
+/*==================== RESUME DOWNLOAD ====================*/
+const RESUME_FILENAME = "Rushikesh_Mali_Resume.pdf";
+
+document.querySelectorAll("[data-resume-download]").forEach((link) => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+    const resumeUrl = link.getAttribute("href");
+
+    window.open(resumeUrl, "_blank", "noopener,noreferrer");
+
+    const downloadLink = document.createElement("a");
+    downloadLink.href = resumeUrl;
+    downloadLink.download = RESUME_FILENAME;
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+  });
 });
 
 /*==================== CONTACT FORM VALIDATION ====================*/
@@ -294,7 +321,7 @@ if (contactForm) {
     if (mobile && !isValidPhone(mobile)) {
       setFieldError(
         "mobile",
-        "Enter a valid mobile number (10-digit Indian or international)."
+        "Enter a valid mobile number (10-digit Indian or international).",
       );
       isValid = false;
     } else {
@@ -360,7 +387,11 @@ if (contactForm) {
   Object.entries(contactFields).forEach(([fieldName, field]) => {
     field.addEventListener("blur", fieldValidators[fieldName]);
     field.addEventListener("input", () => {
-      if (field.closest(".contact__content").classList.contains("contact__content--invalid")) {
+      if (
+        field
+          .closest(".contact__content")
+          .classList.contains("contact__content--invalid")
+      ) {
         fieldValidators[fieldName]();
       }
     });
@@ -371,7 +402,7 @@ if (contactForm) {
       event.preventDefault();
 
       const firstInvalidField = contactForm.querySelector(
-        ".contact__content--invalid .contact__input, .contact__content--invalid .contact__textarea"
+        ".contact__content--invalid .contact__input, .contact__content--invalid .contact__textarea",
       );
 
       if (firstInvalidField) {

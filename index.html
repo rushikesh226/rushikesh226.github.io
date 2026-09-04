@@ -21,9 +21,9 @@
     <!--==================== HEADER ====================-->
     <header class="header" id="header">
         <nav class="nav container">
-            <a href="#" class="nav__logo">Rushikesh Mali</a>
+            <a href="#home" class="nav__logo">Rushikesh Mali</a>
             <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list grid">
+                <ul class="nav__list">
                     <li class="nav__item">
                         <a href="#home" class="nav__link">
                             <i class="uil uil-estate nav__icon"></i>Home
@@ -40,16 +40,6 @@
                         </a>
                     </li>
                     <li class="nav__item">
-                        <a href="#experience" class="nav__link">
-                            <i class="uil uil-briefcase nav__icon"></i>Experience
-                        </a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#services" class="nav__link">
-                            <i class="uil uil-briefcase-alt nav__icon"></i>Services
-                        </a>
-                    </li>
-                    <li class="nav__item">
                         <a href="#portfolio" class="nav__link">
                             <i class="uil uil-scenery nav__icon"></i>Projects
                         </a>
@@ -59,14 +49,17 @@
                             <i class="uil uil-message nav__icon"></i>Contact
                         </a>
                     </li>
+                    <li class="nav__item">
+                        <a href="./packages/resume/Rushikesh_Mali_Resume.pdf" class="nav__link resume-link"
+                            data-resume-download target="_blank" rel="noopener noreferrer">
+                            <i class="uil uil-download-alt nav__icon"></i>Resume
+                        </a>
+                    </li>
                 </ul>
                 <i class="uil uil-times nav__close" id="nav-close"></i>
             </div>
             <div class="nav__btns">
-                <!-- Theme change button -->
-
                 <i class="uil uil-moon change-theme" id="theme-button"></i>
-
                 <div class="nav__toggle" id="nav-toggle">
                     <i class="uil uil-apps"></i>
                 </div>
@@ -77,56 +70,15 @@
     <main class="main">
         <!--==================== HOME ====================-->
         <section class="home section" id="home">
-            <div class="home__container container grid">
-                <div class="home__content grid">
-                    <div class="home__social">
-                        <a href="https://www.linkedin.com/in/rushikesh-mali-56400613b/" target="_blank"
-                            class="home__social-icon">
-                            <i class="uil uil-linkedin-alt"></i>
-                        </a>
-                        <a href="https://twitter.com/rushi_m100" target="_blank" class="home__social-icon">
-                            <i class="uil uil-twitter-alt"></i>
-                        </a>
-                        <a href="https://github.com/rushikesh226" target="_blank" class="home__social-icon">
-                            <i class="uil uil-github-alt"></i>
-                        </a>
-                    </div>
-
-                    <div class="home__img">
-                        <svg class="home__blob" viewBox="0 0 200 187" xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <mask id="mask0" mask-type="alpha">
-                                <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547 
-                                    130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 129.362C2.45775 
-                                    97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666 
-                                    0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z" />
-                            </mask>
-                            <g mask="url(#mask0)">
-                                <path d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 
-                                    165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 
-                                    129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 
-                                    -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z" />
-                                <image class="home__blob-img" x="" xlink:href="packages/images/Rushikesh_Img.jpg" />
-                            </g>
-                        </svg>
-                    </div>
-
-                    <div class="home__data">
-                        <h1 class="home__title">Hi, I am Rushikesh</h1>
-                        <h3 class="home__subtitle">Frontend Full Stack Developer</h3>
-                        <p class="home__description">React.js • Next.js • TypeScript | 3+ Years Building Scalable Web
-                            Apps</p>
-                        <a href="#contact" class="button button--flex home__button">
-                            Contact Me<i class="uil uil-message button__icon"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="home__scroll">
-                    <a href="#about" class="home__scroll-button button--flex">
-                        <i class="uil uil-mouse-alt home__scroll-mouse"></i>
-                        <span class="home__scroll-name">Scroll Down</span>
-                        <i class="uil uil-arrow-down home__scroll-arrow"></i>
+            <div class="home__container container">
+                <div class="home__hero">
+                    <h1 class="home__title">Rushikesh Mali</h1>
+                    <p class="home__intro">Hey, I'm a full stack developer.</p>
+                    <a href="./packages/resume/Rushikesh_Mali_Resume.pdf"
+                        class="button button--flex home__button resume-link" target="_blank" rel="noopener noreferrer"
+                        download="Rushikesh_Mali_Resume.pdf">
+                        View Resume
+                        <i class="uil uil-download-alt button__icon"></i>
                     </a>
                 </div>
             </div>
@@ -135,21 +87,55 @@
         <!--==================== ABOUT ====================-->
         <section class="about section" id="about">
             <h2 class="section__title">About Me</h2>
-            <span class="section__subtitle">My Introduction</span>
+            <span class="section__subtitle">Professional background & career journey</span>
 
             <div class="about__container container grid">
-                <img src="https://camo.githubusercontent.com/b11e7b61bd4e5d72e7203a32b84c726e0ca3a53daac1af266ed17cb1069664f6/68747470733a2f2f692e70696e696d672e636f6d2f6f726967696e616c732f38312f31372f38622f38313137386234376138353938663063383163343739396632636464343035372e676966"
-                    alt="" class="about__img">
+                <img src="./packages/images/Rushikesh_Img.jpg" alt="Rushikesh Mali" class="about__img">
                 <div class="about__data">
                     <p class="about__description">
                         Frontend-focused Full Stack Developer with 3+ years of experience building scalable
-                        web applications using React.js, Next.js, and modern JavaScript. Experienced in building
-                        reusable UI components, integrating REST APIs, and optimizing web performance in Agile
-                        environments.
+                        web applications using React.js, Next.js, and modern JavaScript. I specialize in
+                        reusable UI components, REST API integration, and performance optimization in Agile teams.
                     </p>
+
+                    <div class="about__info">
+                        <div>
+                            <span class="about__info-title">3+</span>
+                            <span class="about__info-name">Years<br>Experience</span>
+                        </div>
+                        <div>
+                            <span class="about__info-title">4+</span>
+                            <span class="about__info-name">Live<br>Projects</span>
+                        </div>
+                        <div>
+                            <span class="about__info-title">Pune</span>
+                            <span class="about__info-name">Based in<br>Maharashtra</span>
+                        </div>
+                    </div>
+
+                    <div class="about__career">
+                        <h3 class="about__career-title">Career Progression</h3>
+                        <ul class="about__career-list">
+                            <li><strong>Software Developer</strong> — Mplify Tech Services (Mar 2025 – Present)</li>
+                            <li><strong>Software Development Engineer – I</strong> — AVRL (Apr 2023 – Mar 2024)</li>
+                        </ul>
+                        <p class="about__career-note">
+                            Transitioned from mechanical engineering to software development through Masai School,
+                            then progressed from SDE roles to frontend-focused full stack development on production
+                            platforms like Bodhak.org and JoyreJoy.
+                        </p>
+                    </div>
+
                     <div class="about__buttons">
-                        <a target="_blank" href="packages/resume/Rushikesh_Mali_Resume.pdf" class="button button--flex">
-                            See My Resume<i class="uil uil-download-alt button__icon"></i>
+                        <a href="#experience" class="button button--flex button--small">
+                            View Full Experience
+                            <i class="uil uil-arrow-right button__icon"></i>
+                        </a>
+                        <a href="./packages/resume/Rushikesh_Mali_Resume.pdf"
+                            class="button button--flex button--small resume-link" target="_blank"
+                            rel="noopener noreferrer" download="Rushikesh_Mali_Resume.pdf">
+                            Download Resume
+                            <i class="uil uil-download-alt button__icon"></i>
                         </a>
                     </div>
                 </div>
@@ -159,7 +145,7 @@
         <!--==================== SKILLS ====================-->
         <section class="skills section" id="skills">
             <h2 class="section__title">Skills</h2>
-            <span class="section__subtitle">My technical level</span>
+            <span class="section__subtitle">Technical & soft skills</span>
 
             <div class="skills__container container grid">
                 <div>
@@ -294,6 +280,75 @@
                                 </div>
                                 <div class="skills__bar">
                                     <span class="skills__percentage skills__tools"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="skills__content skills__close">
+                        <div class="skills__header">
+                            <i class="uil uil-users-alt skills__icon"></i>
+                            <div>
+                                <h1 class="skills__title">Soft Skills</h1>
+                                <span class="skills__subtitle">Collaboration & professional growth</span>
+                            </div>
+                            <i class="uil uil-angle-down skills__arrow"></i>
+                        </div>
+                        <div class="skills__list grid">
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">Communication</h3>
+                                    <span class="skills__number">90%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__communication"></span>
+                                </div>
+                            </div>
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">Team Collaboration</h3>
+                                    <span class="skills__number">92%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__collaboration"></span>
+                                </div>
+                            </div>
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">Problem Solving</h3>
+                                    <span class="skills__number">88%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__problem"></span>
+                                </div>
+                            </div>
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">Time Management</h3>
+                                    <span class="skills__number">85%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__time"></span>
+                                </div>
+                            </div>
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">Adaptability</h3>
+                                    <span class="skills__number">90%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__adaptability"></span>
+                                </div>
+                            </div>
+                            <div class="skills__data">
+                                <div class="skills__titles">
+                                    <h3 class="skills__name">Critical Thinking</h3>
+                                    <span class="skills__number">87%</span>
+                                </div>
+                                <div class="skills__bar">
+                                    <span class="skills__percentage skills__critical"></span>
                                 </div>
                             </div>
                         </div>
@@ -481,60 +536,10 @@
             </div>
         </section>
 
-        <!--==================== SERVICES ====================-->
-        <section class="services section" id="services">
-            <h2 class="section__title">Services</h2>
-            <span class="section__subtitle">What I offer</span>
-
-            <div class="services__container container grid">
-                <!--==================== SERVICES 1 ====================-->
-                <div class="services__content">
-                    <div>
-                        <i class="uil uil-arrow services__icon"></i>
-                        <h3 class="services__title">Frontend & Full Stack Development</h3>
-                    </div>
-                    <span class="button button--flex button--small button--link services__button">
-                        View more
-                        <i class="uil uil-arrow-right button__icon"></i>
-                    </span>
-
-                    <div class="services__modal">
-                        <div class="services__modal-content">
-                            <h4 class="services__modal-title">Web Developer</h4>
-                            <i class="uil uil-times services__modal-close"></i>
-
-                            <ul class="services__modal-services grid">
-                                <li class="services__modal-service">
-                                    <i class="uil uil-check-circle services__modal-icon"></i>
-                                    <p>React.js and Next.js frontend development with reusable components.</p>
-                                </li>
-
-                                <li class="services__modal-service">
-                                    <i class="uil uil-check-circle services__modal-icon"></i>
-                                    <p>REST API integration and responsive, performance-optimized UIs.</p>
-                                </li>
-
-                                <li class="services__modal-service">
-                                    <i class="uil uil-check-circle services__modal-icon"></i>
-                                    <p>State management with Redux Toolkit and modern CSS frameworks.</p>
-                                </li>
-
-                                <li class="services__modal-service">
-                                    <i class="uil uil-check-circle services__modal-icon"></i>
-                                    <p>Agile delivery with clean code and cross-functional collaboration.</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-        </section>
         <!--==================== PORTFOLIO ====================-->
         <section class="portfolio section" id="portfolio">
             <h2 class="section__title">Projects</h2>
-            <span class="section__subtitle">Professional work and selected builds</span>
+            <span class="section__subtitle">Featured work with live deployments</span>
 
             <div class="portfolio__grid container grid">
                 <article class="portfolio__card">
@@ -558,7 +563,7 @@
                     <div class="portfolio__links">
                         <a href="https://www.bodhak.org" class="button button--flex button--small portfolio__button"
                             target="_blank" rel="noopener noreferrer">
-                            Live Site
+                            Live Demo
                             <i class="uil uil-external-link-alt button__icon"></i>
                         </a>
                     </div>
@@ -584,7 +589,7 @@
                     <div class="portfolio__links">
                         <a href="https://joyrejoy.com" class="button button--flex button--small portfolio__button"
                             target="_blank" rel="noopener noreferrer">
-                            Live Site
+                            Live Demo
                             <i class="uil uil-external-link-alt button__icon"></i>
                         </a>
                     </div>
@@ -605,8 +610,8 @@
                         <a href="https://sugar-cosmetics-clone-masai-1.netlify.app/"
                             class="button button--flex button--small portfolio__button" target="_blank"
                             rel="noopener noreferrer">
-                            Demo
-                            <i class="uil uil-arrow-right button__icon"></i>
+                            Live Demo
+                            <i class="uil uil-external-link-alt button__icon"></i>
                         </a>
                         <a href="https://github.com/rushikesh226/Sugar-Cosmetics-Clone"
                             class="button button--flex button--small portfolio__button portfolio__button--outline"
@@ -632,64 +637,10 @@
                         <a href="https://lifestylestoresclone.netlify.app/"
                             class="button button--flex button--small portfolio__button" target="_blank"
                             rel="noopener noreferrer">
-                            Demo
-                            <i class="uil uil-arrow-right button__icon"></i>
+                            Live Demo
+                            <i class="uil uil-external-link-alt button__icon"></i>
                         </a>
                         <a href="https://github.com/Mdshahbazalam6/lifestylestores.com"
-                            class="button button--flex button--small portfolio__button portfolio__button--outline"
-                            target="_blank" rel="noopener noreferrer">
-                            GitHub
-                            <i class="uil uil-github button__icon"></i>
-                        </a>
-                    </div>
-                </article>
-
-                <article class="portfolio__card">
-                    <span class="portfolio__badge portfolio__badge--clone">Clone Project</span>
-                    <h3 class="portfolio__title">Firstpost Website Clone</h3>
-                    <div class="portfolio__tags">
-                        <span class="portfolio__tag">HTML</span>
-                        <span class="portfolio__tag">CSS</span>
-                        <span class="portfolio__tag">JavaScript</span>
-                        <span class="portfolio__tag">Bootstrap</span>
-                        <span class="portfolio__tag">JSON Server</span>
-                    </div>
-                    <p class="portfolio__description">Fully responsive news media website clone with dynamic content
-                        handling and clean editorial layout.</p>
-                    <div class="portfolio__links">
-                        <a href="https://firstpost-clone.netlify.app/"
-                            class="button button--flex button--small portfolio__button" target="_blank"
-                            rel="noopener noreferrer">
-                            Demo
-                            <i class="uil uil-arrow-right button__icon"></i>
-                        </a>
-                        <a href="https://github.com/Royanosh/firstpost"
-                            class="button button--flex button--small portfolio__button portfolio__button--outline"
-                            target="_blank" rel="noopener noreferrer">
-                            GitHub
-                            <i class="uil uil-github button__icon"></i>
-                        </a>
-                    </div>
-                </article>
-
-                <article class="portfolio__card">
-                    <span class="portfolio__badge portfolio__badge--clone">Clone Project</span>
-                    <h3 class="portfolio__title">Cricbuzz Website Clone</h3>
-                    <div class="portfolio__tags">
-                        <span class="portfolio__tag">HTML</span>
-                        <span class="portfolio__tag">CSS</span>
-                        <span class="portfolio__tag">JavaScript</span>
-                    </div>
-                    <p class="portfolio__description">Static, responsive cricket news platform clone focused on layout
-                        structure and mobile-first design.</p>
-                    <div class="portfolio__links">
-                        <a href="https://heroic-puffpuff-cbebb9.netlify.app/index.html"
-                            class="button button--flex button--small portfolio__button" target="_blank"
-                            rel="noopener noreferrer">
-                            Demo
-                            <i class="uil uil-arrow-right button__icon"></i>
-                        </a>
-                        <a href="https://github.com/nidhishpareek/CrickBuzz-Clone"
                             class="button button--flex button--small portfolio__button portfolio__button--outline"
                             target="_blank" rel="noopener noreferrer">
                             GitHub
@@ -823,16 +774,17 @@
 
                 <ul class="footer__links">
                     <li>
-                        <a href="#services" class="footer__link">Services</a>
-                    </li>
-                    <li>
-                        <a href="#experience" class="footer__link">Experience</a>
+                        <a href="#about" class="footer__link">About</a>
                     </li>
                     <li>
                         <a href="#portfolio" class="footer__link">Projects</a>
                     </li>
                     <li>
                         <a href="#contact" class="footer__link">Contact</a>
+                    </li>
+                    <li>
+                        <a href="./packages/resume/Rushikesh_Mali_Resume.pdf" class="footer__link resume-link"
+                            data-resume-download target="_blank" rel="noopener noreferrer">Resume</a>
                     </li>
                 </ul>
 
