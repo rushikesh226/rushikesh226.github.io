@@ -294,7 +294,103 @@ img {
 
 /*==================== HOME ====================*/
 
+.home {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+
+.home__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.home__gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    hsla(var(--hue-color), 55%, 88%, 0.95) 0%,
+    hsla(var(--hue-color), 45%, 93%, 0.75) 45%,
+    hsla(200, 40%, 90%, 0.85) 100%
+  );
+  background-size: 200% 200%;
+  animation: home-gradient-shift 14s ease infinite;
+}
+
+.home__shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.55;
+}
+
+.home__shape--1 {
+  width: 320px;
+  height: 320px;
+  top: -80px;
+  left: -60px;
+  background: var(--first-color);
+  animation: home-float 18s ease-in-out infinite;
+}
+
+.home__shape--2 {
+  width: 280px;
+  height: 280px;
+  top: 20%;
+  right: -70px;
+  background: hsl(200, 70%, 65%);
+  animation: home-float 22s ease-in-out infinite reverse;
+  animation-delay: -4s;
+}
+
+.home__shape--3 {
+  width: 240px;
+  height: 240px;
+  bottom: 10%;
+  left: 15%;
+  background: hsl(175, 60%, 58%);
+  animation: home-float 20s ease-in-out infinite;
+  animation-delay: -8s;
+}
+
+.home__shape--4 {
+  width: 180px;
+  height: 180px;
+  bottom: -40px;
+  right: 20%;
+  background: var(--first-color-alt);
+  animation: home-float 16s ease-in-out infinite reverse;
+  animation-delay: -2s;
+}
+
+.home__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(
+      hsla(var(--hue-color), 30%, 50%, 0.06) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      hsla(var(--hue-color), 30%, 50%, 0.06) 1px,
+      transparent 1px
+    );
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(
+    ellipse at center,
+    black 30%,
+    transparent 75%
+  );
+}
+
 .home__container {
+  position: relative;
+  z-index: 1;
   min-height: calc(100vh - var(--header-height) - 4rem);
   display: flex;
   align-items: center;
@@ -303,12 +399,27 @@ img {
 
 .home__hero {
   text-align: center;
-  padding: 2rem 0;
+  padding: 2.5rem 2rem;
+  max-width: 36rem;
+  background: hsla(0, 0%, 100%, 0.55);
+  border: 1px solid hsla(var(--hue-color), 40%, 70%, 0.25);
+  border-radius: 1.25rem;
+  box-shadow: 0 12px 40px hsla(var(--hue-color), 40%, 40%, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .home__title {
   font-size: var(--big-font-size);
   margin-bottom: var(--mb-1);
+  background: linear-gradient(
+    135deg,
+    var(--title-color),
+    var(--first-color-alt)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .home__intro {
@@ -320,6 +431,79 @@ img {
 
 .home__button {
   margin: 0 auto;
+}
+
+@keyframes home-float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(28px, -32px) scale(1.06);
+  }
+  66% {
+    transform: translate(-22px, 18px) scale(0.94);
+  }
+}
+
+@keyframes home-gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+body.dark-theme .home__gradient {
+  background: linear-gradient(
+    135deg,
+    hsla(var(--hue-color), 28%, 14%, 0.98) 0%,
+    hsla(var(--hue-color), 25%, 18%, 0.9) 50%,
+    hsla(200, 20%, 16%, 0.95) 100%
+  );
+}
+
+body.dark-theme .home__shape {
+  opacity: 0.22;
+}
+
+body.dark-theme .home__grid {
+  background-image:
+    linear-gradient(
+      hsla(var(--hue-color), 20%, 70%, 0.08) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      hsla(var(--hue-color), 20%, 70%, 0.08) 1px,
+      transparent 1px
+    );
+}
+
+body.dark-theme .home__hero {
+  background: hsla(var(--hue-color), 29%, 16%, 0.75);
+  border-color: hsla(var(--hue-color), 30%, 40%, 0.35);
+  box-shadow: 0 12px 40px hsla(0, 0%, 0%, 0.25);
+}
+
+body.dark-theme .home__title {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--hue-color), 8%, 95%),
+    var(--first-color)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home__gradient,
+  .home__shape {
+    animation: none;
+  }
 }
 
 .home__scroll-button {
